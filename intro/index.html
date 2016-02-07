@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Developing Data Products</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Products">
+  <meta name="author" content="Patricia Bohl">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Products</h1>
+    <h2>Arbuthnot k-means clustering</h2>
+    <p>Patricia Bohl<br/>Final Assignment</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>What is K-means clustering?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Clustering is the process of partitioning a group of data points into a small number of clusters. For instance, the items in a supermarket are clustered in categories (butter, cheese and milk are grouped in dairy products). Of course this is a qualitative kind of partitioning. A quantitative approach would be to measure certain features of the products, say percentage of milk and others, and products with high percentage of milk would be grouped together. In general, we have n data points xi,i=1...n that have to be partitioned in k clusters. The goal is to assign a cluster to each data point. K-means is a clustering method that aims to find the positions ??i,i=1...k of the clusters that minimize the square of the distance from the data points to the cluster. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Arbuthnot&#39;s data on male and female birth ratios in London from 1629-1710.</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>John Arbuthnot (1710) used these time series data on the ratios of male to female births in London from 1629-1710 to carry out the first known significance test, comparing observed data to a null hypothesis. The data for these 81 years showed that in every year there were more male than female christenings.</p>
+
+<p>On the assumption that male and female births were equally likely, he showed that the probability of observing 82 years with more males than females was vanishingly small (~ 4.14 x 10<sup>{-25}).</sup> He used this to argue that a nearly constant birth ratio &gt; 1 could be interpreted to show the guiding hand of a devine being. The data set adds variables of deaths from the plague and total mortality obtained by Campbell and from Creighton (1965).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    <pre><code>ext_widgets: {rCharts: [libraries/nvd3]}
+</code></pre>
+
+<h2>ui.R</h2>
+
+<pre><code>## ```{r opts.label = &#39;shiny&#39;}
+## slidifyUI(pageWithSidebar(
+##   headerPanel(&#39;Arbuthnot k-means clustering&#39;),
+##   sidebarPanel(
+##     selectInput(&#39;xcol&#39;, &#39;X Variable&#39;, names(Arbuthnot)),
+##     selectInput(&#39;ycol&#39;, &#39;Y Variable&#39;, names(Arbuthnot),
+##                 selected=names(Arbuthnot)[[5]]),
+##     numericInput(&#39;clusters&#39;, &#39;Cluster count&#39;, 3,
+##                  min = 1, max = 9)),
+##   mainPanel(plotOutput(&#39;plot1&#39;))))
+## )
+## `` `
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Links:</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Description of k-means clustering:
+<a href="http://www.onmyphd.com/?p=k-means.clustering&amp;ckattempt=1">http://www.onmyphd.com/?p=k-means.clustering&amp;ckattempt=1</a></p>
+
+<p>Description of Arbuthnot&#39;s dataset: R help</p>
+
+<p>Link to app: <a href="https://patricialrt.shinyapps.io/develop_assignment/">https://patricialrt.shinyapps.io/develop_assignment/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='What is K-means clustering?'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Arbuthnot&#39;s data on male and female birth ratios in London from 1629-1710.'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='NA'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Links:'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
